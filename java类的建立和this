@@ -1,0 +1,20 @@
+class cat{
+    private String name;
+    private  int age;
+    public cat(String name,int age){
+        this.name = name;
+        this.age = age;
+    }
+    public void act(){
+        System.out.println("name:" +name+",age"+age);
+    }
+}
+
+public class One {
+
+    public static void main(String[] args) {
+        cat a = new cat("Tom",3);
+        a.act();
+    }
+
+}
