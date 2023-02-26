@@ -1,0 +1,30 @@
+public class One {
+    private int a;
+    static int b;
+    public void methodA(){
+        a = 10;
+        System.out.println(a);
+    }
+    public static void methodB(){
+        System.out.println(b);
+    }
+    // 静态内部类：被static修饰的成员内部类
+    static class InnerClass{
+        public void methodInner(){
+            // 在内部类中只能访问外部类的静态成员
+            a = 100;
+            // 编译失败，因为a不是类成员变量
+            
+            b =200;
+            //编译成功，因为b在外部类的定义是静态成员
+            
+            methodB();
+            // methodA(); // 编译失败，因为methodB()不是类成员方法
+        }
+    }
+    public static void main(String[] args) {
+// 静态内部类对象创建 & 成员访问
+        One.InnerClass innerClass = new One.InnerClass();
+        innerClass.methodInner();
+    }
+}
