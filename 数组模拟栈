@@ -1,0 +1,68 @@
+public class ArrayStack {
+    //向栈中存储元素，这里使用一为数组模拟，存到栈中就表示存储到数组中；
+    //为何选择Object数组，那是因为这个栈可以存储java中的任何引用类型的数据，包括String
+    private Object[] elements;
+
+    //栈帧，永远是指向栈顶的
+    //这个默认初始值应该是空。注意：最初的栈是空的，一个元素都没有
+    private int index ;
+
+    //压栈
+    public void push(Object obj){
+        //什么时候表示栈满了？
+        if(this.index >= this.elements.length -1){
+            System.out.println("栈已满");
+            return;
+        }
+        this.index ++;
+        this.elements[index] = obj;
+        //注意：所有sout方法执行的时候，如果输出引用的话，自动调用引用的toString方法
+        System.out.println("压栈"+ obj + "压栈成功，栈帧指向"+ index);
+    }
+
+    //弹栈--从数组中往外取元素
+    public Object pop(){
+        if(this.index < 0){
+            System.out.println("弹栈失败，栈已空");
+            return null;
+        }
+        System.out.println("弹栈"+ elements[index] + "元素成功");
+        index--;
+        System.out.println("栈帧指向"+ index);
+        return this.elements[index];
+    }
+
+    //构造方法--进行默认初始化
+    public ArrayStack() {
+        this.elements = new Object[10];
+        this.index = -1;
+    }
+
+    public Object[] getElements() {
+        return elements;
+    }
+
+    public void setElements(Object[] elements) {
+        this.elements = elements;
+    }
+
+    public static void main(String[] args) {
+        ArrayStack stack = new ArrayStack();
+        stack.push(new Object());
+        stack.push(new Object());
+        stack.push(new Object());
+        stack.push(new Object());
+        stack.push(new Object());
+        stack.push(new Object());
+        stack.push(new Object());
+        stack.push(new Object());
+        stack.push(new Object());
+        stack.push(new Object());
+
+        //栈已满
+        stack.push(new Object());
+
+        stack.pop();
+    }
+
+}
