@@ -1,0 +1,36 @@
+package StringStudy;
+
+//关于String类的一部分构造方法
+public class StringTwo {
+    public static void main(String[] args) {
+
+        //创建字符串对象最常用的一种方式
+        String s1 = "hello world";
+        System.out.println(s1);
+        //输出的是字符串，不是地址
+
+        //这里只掌握常用的构造方法
+        //String(byte[] bytes)
+        byte[] bytes = {97,98,99};//a,b,c
+        String s2 = new String(bytes);
+        System.out.println(s2);
+        //输出一个引用的时候，会自动调用toString方法，默认Object的话，会自动输出对象的地址
+        //那么这里是输出地址吗？ --输出的结果是abc字符串本身，并不是地址
+        //因此String类已经重写了toString方法
+
+        //String(byte[] bytes, int offset, int length)
+        //offset:下标：length：长度
+        String s3 = new String(bytes,1,2);//bc
+
+        //char数组全部转换成字符串
+        //String(char[] value)
+        char[] chars = {'我','你','她','她','它'};
+        String s4 = new String(chars);
+        System.out.println(s4);
+
+        //将char数组一部分转为字符串
+        //String(char[] value, int offset, int count)
+        String s5 = new String(chars,2,3);
+        System.out.println(s5);
+    }
+}
